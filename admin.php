@@ -5,7 +5,9 @@ $uploadFile = $uploadsDir.basename($_FILES['test']['name']);
 
 
 if (!empty($_FILES)) {
-    if (move_uploaded_file($_FILES['test']['tmp_name'], $uploadsDir. $_FILES["test"]['name'])) {
+    if ($_FILES['test']['type'] != "application/json") {
+        $uploadResult = "Для загрузки доступны только файлы json";
+    } elseif (move_uploaded_file($_FILES['test']['tmp_name'], $uploadsDir. $_FILES["test"]['name'])) {
         $uploadResult = "Файл успешно загружен в папку tests.";
     } else {
         $uploadResult = "Не удалось загрузить файл";
