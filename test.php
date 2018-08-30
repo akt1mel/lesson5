@@ -5,10 +5,8 @@ $test = json_decode(file_get_contents($testName), true);
 
 $result = 0;
 
+//после отправки формы подчситываем правильное количество ответов
 
-if (isset($_POST['submit'])) {
-
-}
 
 
 ?>
@@ -36,6 +34,18 @@ if (isset($_POST['submit'])) {
     <input type="submit" value="Отправить" name="submit">
 </form>
 
+
+<?php
+    if (isset($_POST['submit'])) {
+        foreach ($test as $key => $value) {
+            if($value['correct_answer'] == $_POST['answer'.$key]) {
+                $result++;
+            }
+        }
+        echo "<h2>Всего верных ответов ".$result."</h2>";
+    }
+
+?>
 
 <ul>
     <li><a href="admin.php">Загрузка теста</a></li>
