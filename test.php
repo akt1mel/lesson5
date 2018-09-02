@@ -25,10 +25,12 @@ $result = 0;
     <?php foreach ($test as $key => $value) {
         echo "<fieldset id=''>";
             echo "<legend>".$value["question"]."</legend>";
-            echo "<label><input type='radio' name='answer".$key."' value='0' required>".$value["answers"][0]."</label>";
-            echo "<label><input type='radio' name='answer".$key."' value='1'>".$value["answers"][1]."</label>";
-            echo "<label><input type='radio' name='answer".$key."' value='2'>".$value["answers"][2]."</label>";
-            echo "<label><input type='radio' name='answer".$key."' value='3'>".$value["answers"][3]."</label>";
+            foreach ($value["answers"] as $answer) {
+                echo "<label><input type='radio' name='answer".$key."' value='0' required>".$answer."</label>";
+            //echo "<label><input type='radio' name='answer".$key."' value='1'>".$value["answers"][1]."</label>";
+            //echo "<label><input type='radio' name='answer".$key."' value='2'>".$value["answers"][2]."</label>";
+            //echo "<label><input type='radio' name='answer".$key."' value='3'>".$value["answers"][3]."</label>";
+            }
         echo "</fieldset>";
     } ?>
     <input type="submit" value="Отправить" name="submit">
