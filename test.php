@@ -2,12 +2,7 @@
 
 $testName = "tests/".$_GET['test'];
 $test = json_decode(file_get_contents($testName), true);
-
 $result = 0;
-
-//после отправки формы подчситываем правильное количество ответов
-
-
 
 ?>
 
@@ -25,15 +20,14 @@ $result = 0;
     <?php foreach ($test as $key => $value) {
         echo "<fieldset id=''>";
             echo "<legend>".$value["question"]."</legend>";
+            $i = 0;
             foreach ($value["answers"] as $answer) {
-                echo "<label><input type='radio' name='answer".$key."' value='0' required>".$answer."</label>";
-            //echo "<label><input type='radio' name='answer".$key."' value='1'>".$value["answers"][1]."</label>";
-            //echo "<label><input type='radio' name='answer".$key."' value='2'>".$value["answers"][2]."</label>";
-            //echo "<label><input type='radio' name='answer".$key."' value='3'>".$value["answers"][3]."</label>";
+                echo "<label><input type='radio' name='answer".$key."' value='".$i++."' required>".$answer."</label>";
             }
         echo "</fieldset>";
     } ?>
     <input type="submit" value="Отправить" name="submit">
+
 </form>
 
 
